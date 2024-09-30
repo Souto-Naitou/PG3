@@ -1,6 +1,6 @@
 #include <iostream>
 
-inline unsigned int CalcurateRecursiveSalary(unsigned int _hourWork)
+inline unsigned int CalculateRecursiveSalary(unsigned int _hourWork)
 {
     // 働け (早期リターン)
     if (_hourWork <= 0u) return 0u;
@@ -12,27 +12,27 @@ inline unsigned int CalcurateRecursiveSalary(unsigned int _hourWork)
     }
 
     // 再起的に実行
-    return CalcurateRecursiveSalary(_hourWork - 1) * 2u - 50u;
+    return CalculateRecursiveSalary(_hourWork - 1) * 2u - 50u;
 }
 
 int main(void)
 {
     unsigned int hourlyWage = 1072u;
 
-    /// 一般的な給料計算方式
+    /// 一般的な賃金体系
     printf("Normal Salary-Calculate-Type :\n");
     for (unsigned int hourWork = 1u; hourWork <= 8u; ++hourWork)
     {
-        
         printf("%2u hour : %5u yen\n", hourWork, hourWork * hourlyWage);
     }
 
     printf("\n");
 
-    printf("Recursive Salary-Calcurate-Type :\n");
+    /// 再帰的な賃金体系
+    printf("Recursive Salary-Calculate-Type :\n");
     for (unsigned int hourWork = 1u; hourWork <= 8u; ++hourWork)
     {
-        printf("%2u hour : %5u yen\n", hourWork, CalcurateRecursiveSalary(hourWork));
+        printf("%2u hour : %5u yen\n", hourWork, CalculateRecursiveSalary(hourWork));
     }
 
     return 0;
