@@ -1,41 +1,43 @@
 #include <iostream>
 
-template <typename T>
-inline T Min(T _x, T _y)
+inline unsigned int CalculateRecursiveSalary(unsigned int _hourWork)
 {
-    // 小さい方を返す
-    return _x < _y ? _x : _y;
-}
+    // 早期[リターン|退社]
+    if (_hourWork <= 0u) return 0u;
 
-template <>
-inline char Min(char, char)
-{
-    printf("数字以外は代入できません\n");
-    return {};
+    // 末端
+    if (_hourWork <= 1u)
+    {
+        return 100u;
+    }
+
+    // 再起的に実行
+    return CalculateRecursiveSalary(_hourWork - 1) * 2u - 50u;
 }
 
 int main(void)
 {
-    /// int型
-    int iNum0 = 16; int iNum1 = -4; int iResult = {};
-    iResult = Min(iNum0, iNum1);
-    printf("Min(%d, %d) : %d\n", iNum0, iNum1, iResult);
+    unsigned int hourlyWage = 1072u;
+    unsigned int hourWork = 0u;
 
-    /// float型
-    float fNum0 = 32.0f; float fNum1 = 64.0f; float fResult = {};
-    fResult = Min(fNum0, fNum1);
-    printf("Min(%.1f, %.1f) : %.1f\n", fNum0, fNum1, fResult);
-    
-    /// double型
-    double lfNum0 = 4.0; double lfNum1 = -4.0; double lfResult = {};
-    lfResult = Min(lfNum0, lfNum1);
-    printf("Min(%.1lf, %.1f) : %.1lf\n", lfNum0, lfNum1, lfResult);
+    printf("実働時間を入力 > ");
+    scanf_s("%u", &hourWork);
 
-    /// char型
-    char c0 = 65u; char c1 = 66u; char cResult = {};
-    cResult = Min(c0, c1);
-    printf("Min(%c, %c) : %c\n", c0, c1, cResult);
+    /// 一般的な賃金体系
+    printf("Normal Salary-Calculate-Type :\n");
+    for (unsigned int i = 1u; i <= hourWork; ++i)
+    {
+        printf("%2u hour : %5u yen\n", i, i * hourlyWage);
+    }
 
+    printf("\n");
+
+    /// 再帰的な賃金体系
+    printf("Recursive Salary-Calculate-Type :\n");
+    for (unsigned int i = 1u; i <= hourWork; ++i)
+    {
+        printf("%2u hour : %5u yen\n", i, CalculateRecursiveSalary(i));
+    }
 
     return 0;
 }
