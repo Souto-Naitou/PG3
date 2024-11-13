@@ -131,10 +131,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bread.cpp" />
+    <ClCompile Include="FrenchBread.cpp" />
+    <ClCompile Include="FrenchBread.h" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Shokupan.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Combination.h" />
+    <ClInclude Include="Bread.h" />
+    <ClInclude Include="Shokupan.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

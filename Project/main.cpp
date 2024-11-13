@@ -4,39 +4,60 @@
 #include <Windows.h>
 #include <functional>
 
-#include "Combination.h"
+#include "Shokupan.h"
+#include "FrenchBread.h"
 
 int main(void)
 {
-    /// それぞれの型で2つの変数を作成
-    int     iNum0 = 32;
-    int     iNum1 = 64;
+    /// 食パンを作成
+    std::cout << "[食パンを作成]" << std::endl;
+    std::endl(std::cout);
 
-    float   fNum0 = -64.0f;
-    float   fNum1 = 128.0f;
+    Shokupan* shokupan1 = new Shokupan();
+    Shokupan* shokupan2 = new Shokupan();
 
-    double  dNum0 = -128.0;
-    double  dNum1 = -16.0;
+    // 食パンの形状、大きさ、味を表示
+    Bread::PrintInfo("食パン1", shokupan1);
+    Bread::PrintInfo("食パン2", shokupan2);
+    std::endl(std::cout);
+
+    /// 食パン1を焼く
+    std::cout << "[食パン1を焼く]" << std::endl;
+    shokupan1->Bake();
+    std::endl(std::cout);
+
+    /// 食パンの状態を表示
+    Bread::PrintInfo("食パン1", shokupan1);
+    Bread::PrintInfo("食パン2", shokupan2);
+    std::endl(std::cout);
+    std::endl(std::cout);
 
 
-    /// 各変数を組み合わせたインスタンスを作成
-    Combination<int,    int>*       iCombi  = new Combination(iNum0, iNum1);
-    Combination<float,  float>*     fCombi  = new Combination(fNum0, fNum1);
-    Combination<double, double>*    dCombi  = new Combination(dNum0, dNum1);
 
-    Combination<int,    float>*     ifCombi = new Combination(iNum0, fNum0);
-    Combination<float,  double>*    fdCombi = new Combination(fNum0, dNum0);
-    Combination<int,    double>*    idCombi = new Combination(iNum0, dNum0);
+    /// フランスパンを作成
+    std::cout << "[フランスパンを作成]" << std::endl;
+    std::endl(std::cout);
 
+    FrenchBread* frenchBread1 = new FrenchBread();
+    FrenchBread* frenchBread2 = new FrenchBread();
+    // フランスパンの形状、大きさ、味を表示
+    Bread::PrintInfo("フランスパン1", frenchBread1);
+    Bread::PrintInfo("フランスパン2", frenchBread2);
+    std::endl(std::cout);
 
-    /// 全インスタンスの最小値を表示
-    std::cout << "[" << iCombi->x << ":" << iCombi->y << "]->Min() : " << iCombi->Min() << std::endl;
-    std::cout << "[" << fCombi->x << ":" << fCombi->y << "]->Min() : " << fCombi->Min() << std::endl;
-    std::cout << "[" << dCombi->x << ":" << dCombi->y << "]->Min() : " << dCombi->Min() << std::endl;
-    std::cout << "[" << ifCombi->x << ":" << ifCombi->y << "]->Min() : " << ifCombi->Min() << std::endl;
-    std::cout << "[" << fdCombi->x << ":" << fdCombi->y << "]->Min() : " << fdCombi->Min() << std::endl;
-    std::cout << "[" << idCombi->x << ":" << idCombi->y << "]->Min() : " << idCombi->Min() << std::endl;
+    /// フランスパン1を焼く
+    std::cout << "[フランスパン1を焼く]" << std::endl;
+    frenchBread1->Bake();
+    std::endl(std::cout);
+
+    /// フランスパン1の状態を表示
+    Bread::PrintInfo("フランスパン1", frenchBread1);
+    Bread::PrintInfo("フランスパン2", frenchBread2);
+    std::endl(std::cout);
+
+    system("pause");
 
 
     return 0;
 }
+
