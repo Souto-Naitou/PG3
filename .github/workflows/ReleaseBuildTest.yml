@@ -25,4 +25,4 @@ jobs:
 
       - name: Run
         run: |
-          call sln\x64\Release\Project.exe
+          & sln\x64\Release\Project.exe
