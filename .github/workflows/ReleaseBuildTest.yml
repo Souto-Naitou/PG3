@@ -1,8 +1,8 @@
 name: ReleaseBuild ${{ github.ref_name }}
 
 on:
-  create:
-    ref_type: branch
+  push:
+    branches: ${{ github.ref_name }}
 
 env:
   SOLUTION_FILE_PATH: sln\PG3.sln
