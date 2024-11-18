@@ -2,7 +2,7 @@ name: ReleaseBuild ${{ github.ref_name }}
 
 on:
   push:
-    branches: ${{ github.ref_name }}
+    branches: master
 
 env:
   SOLUTION_FILE_PATH: sln\PG3.sln
