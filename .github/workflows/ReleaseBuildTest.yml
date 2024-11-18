@@ -1,4 +1,4 @@
-name: ReleaseBuild ${{ github.ref_name }}
+name: ReleaseBuild
 
 on:
   push:
