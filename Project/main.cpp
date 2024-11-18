@@ -1,18 +1,33 @@
 #include <iostream>
+#include <sstream>
 
-#include "Circle.h"
-#include "Rectangle.h"
+#include <string>
+#include <list>
+#include "YamanoteStation/YamanoteStation.h"
+
 
 int main(void)
 {
-    Circle circle(5);
-    circle.Size();
-    circle.Draw();
+    YamanoteStation* pYamanoteSta = new YamanoteStation();
 
-    Rectangle rectangle(5, 10);
-    rectangle.Size();
-    rectangle.Draw();
+    pYamanoteSta->ChangeEra(1970u);
+
+    while (true)
+    {
+        pYamanoteSta->Print();
+        std::endl(std::cout);
+
+        unsigned int inputYear = 1970u;
+        std::cout << "表示したい年数を入力してください" << std::endl;
+        std::cout << "終了する場合は0を入力してください\n> ";
+        std::cin >> inputYear;
+
+        if (inputYear == 0u) break;
+
+        system("cls");
+
+        pYamanoteSta->ChangeEra(inputYear);
+    }
 
     return 0;
 }
-
