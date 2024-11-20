@@ -1,4 +1,4 @@
-name: BuildTest
+name: BuildTest_03_01
 
 on:
   push:
@@ -26,4 +26,5 @@ jobs:
       - name: Run
         run: |
           & sln\x64\Release\Project.exe
+        timeout-minutes: 1
 

@@ -1,4 +1,4 @@
-name: BuildTest
+name: BuildTest_$$ BRANCH_NAME $$
 
 on:
   push:
@@ -26,3 +26,4 @@ jobs:
       - name: Run
         run: |
           & sln\x64\Release\Project.exe
+        timeout-minutes: 1
