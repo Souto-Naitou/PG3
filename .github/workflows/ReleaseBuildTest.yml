@@ -1,4 +1,4 @@
-name: ReleaseBuild
+name: BuildTest
 
 on:
   push:
@@ -9,7 +9,7 @@ env:
   CONFIGURATION: Release
 
 jobs:
-  create_yml_file:
+  Build:
     runs-on: windows-2022
 
     steps:
