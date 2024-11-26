@@ -20,10 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="YamanoteStation\YamanoteStation.cpp" />
+    <ClCompile Include="Parser_.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="YamanoteStation\YamanoteStation.h" />
+    <ClInclude Include="Parser_.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

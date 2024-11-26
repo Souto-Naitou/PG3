@@ -1,32 +1,50 @@
 #include <iostream>
 #include <sstream>
+#include <vector>
+#include <memory>
+#include <algorithm>
+#include <regex>
 
-#include <string>
-#include <list>
-#include "YamanoteStation/YamanoteStation.h"
-
+#include "Parser_.h"
 
 int main(void)
 {
-    YamanoteStation* pYamanoteSta = new YamanoteStation();
+    std::unique_ptr<Parser> parser = std::make_unique<Parser>();
 
-    pYamanoteSta->ChangeEra(1970u);
+    parser->Load("text/PG3_2024_03_02.txt");
 
-    while (true)
+    auto& parsedData = parser->GetArrays();
+
+    std::sort(parsedData.back().begin(), parsedData.back().end());
+
+    /// 頑張って書いたやつ
+    //std::sort(parsedData.back().begin(), parsedData.back().end(), [](const std::string& _l, const std::string& _r) {
+    //    std::regex pattern("\\d+?");
+    //    std::smatch lMatch;
+    //    std::smatch rMatch;
+
+    //    std::string ls = _l;
+    //    std::string rs = _r;
+
+    //    while (std::regex_search(ls, lMatch, pattern) && std::regex_search(rs, rMatch, pattern))
+    //    {
+    //        if (std::stoi(lMatch[0]) == std::stoi(rMatch[0]))
+    //        {
+    //            ls = lMatch.suffix();
+    //            rs = rMatch.suffix();
+    //            continue;
+    //        }
+    //        else return std::stoi(lMatch[0]) < std::stoi(rMatch[0]);
+    //    }
+    //    return false;
+    //});
+
+    for (auto& array : parsedData)
     {
-        pYamanoteSta->Print();
-        std::endl(std::cout);
-
-        unsigned int inputYear = 1970u;
-        std::cout << "表示したい年数を入力してください" << std::endl;
-        std::cout << "終了する場合は0を入力してください\n> ";
-        std::cin >> inputYear;
-
-        if (inputYear == 0u) break;
-
-        system("cls");
-
-        pYamanoteSta->ChangeEra(inputYear);
+        for (auto& data : array)
+        {
+            std::cout << data << std::endl;
+        }
     }
 
     return 0;
