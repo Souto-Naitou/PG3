@@ -1,4 +1,4 @@
-name: BuildTest
+name: BuildTest_master
 
 on:
   push:
