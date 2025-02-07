@@ -7,18 +7,18 @@
 
 long long MeasureTimeFunction(std::function<void()> function)
 {
-    // ŠJnŠÔ
+    // é–‹å§‹æ™‚é–“
     auto start = std::chrono::high_resolution_clock::now();
 
     function();
 
-    // I—¹ŠÔ
+    // çµ‚äº†æ™‚é–“
     auto end = std::chrono::high_resolution_clock::now();
 
-    // (I—¹ - ŠJn) ‚Å‚©‚©‚Á‚½ŠÔ‚ğŒvZ
+    // (çµ‚äº† - é–‹å§‹) ã§ã‹ã‹ã£ãŸæ™‚é–“ã‚’è¨ˆç®—
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
 
-    // •Ô‚·
+    // è¿”ã™
     return duration.count();
 }
 
@@ -36,8 +36,11 @@ int main(void)
         std::string move = std::move(hugeString);
     });
 
-    std::cout << "ƒRƒs[\t: " << copyDuration << "ƒÊ•b" << std::endl;
-    std::cout << "ˆÚ“®\t: " << moveDuration << "ƒÊ•b" << std::endl;
+
+    std::cout << "===== å‡¦ç†æ™‚é–“ã®æ¯”è¼ƒ =====" << std::endl;
+    std::cout << "ã‚³ãƒ”ãƒ¼\t: " << copyDuration << "Î¼ç§’" << std::endl;
+    std::cout << "ãƒ ãƒ¼ãƒ–\t: " << moveDuration << "Î¼ç§’" << std::endl;
+    std::cout << "==========================" << std::endl;
 
     return 0;
 }

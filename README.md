@@ -1,4 +1,4 @@
 ## Build Test Status
-| [06_02](https://github.com/Souto-Naitou/PG3/tree/06_02) |
+| [07_01](https://github.com/Souto-Naitou/PG3/tree/07_01) |
 |:---:|
-|[![BuildTest_06_02](https://github.com/Souto-Naitou/PG3/actions/workflows/06_02.yml/badge.svg?branch=06_02)](https://github.com/Souto-Naitou/PG3/actions/workflows/06_02.yml)|
+|[![BuildTest_07_01](https://github.com/Souto-Naitou/PG3/actions/workflows/07_01.yml/badge.svg?branch=07_01)](https://github.com/Souto-Naitou/PG3/actions/workflows/07_01.yml)|
