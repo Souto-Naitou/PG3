@@ -1,4 +1,5 @@
 #include <iostream>
+#include <thread>
 
 #include <functional>
 #include <chrono>
@@ -6,18 +7,18 @@
 
 long long MeasureTimeFunction(std::function<void()> function)
 {
-    // é–‹å§‹æ™‚é–“
+    // ŠJnŠÔ
     auto start = std::chrono::high_resolution_clock::now();
 
     function();
 
-    // çµ‚äº†æ™‚é–“
+    // I—¹ŠÔ
     auto end = std::chrono::high_resolution_clock::now();
 
-    // (çµ‚äº† - é–‹å§‹) ã§ã‹ã‹ã£ãŸæ™‚é–“ã‚’è¨ˆç®—
+    // (I—¹ - ŠJn) ‚Å‚©‚©‚Á‚½ŠÔ‚ğŒvZ
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
 
-    // è¿”ã™
+    // •Ô‚·
     return duration.count();
 }
 
@@ -35,8 +36,8 @@ int main(void)
         std::string move = std::move(hugeString);
     });
 
-    std::cout << "ã‚³ãƒ”ãƒ¼\t: " << copyDuration << "Î¼ç§’" << std::endl;
-    std::cout << "ç§»å‹•\t: " << moveDuration << "Î¼ç§’" << std::endl;
+    std::cout << "ƒRƒs[\t: " << copyDuration << "ƒÊ•b" << std::endl;
+    std::cout << "ˆÚ“®\t: " << moveDuration << "ƒÊ•b" << std::endl;
 
     return 0;
 }
