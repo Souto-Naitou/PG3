@@ -22,4 +22,8 @@ jobs:
       - name: Build
         run: |
           msbuild ${{env.SOLUTION_FILE_PATH}} /p:Platform=x64,Configuration=${{env.CONFIGURATION}}
+      
+      - name: Run
+        run: |
+          & sln\x64\Release\Project.exe
 
