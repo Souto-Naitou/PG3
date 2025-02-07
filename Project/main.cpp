@@ -1,43 +1,42 @@
 #include <iostream>
 
-inline unsigned int CalculateRecursiveSalary(unsigned int _hourWork)
+#include <functional>
+#include <chrono>
+#include <string>
+
+long long MeasureTimeFunction(std::function<void()> function)
 {
-    // 早期[リターン|退社]
-    if (_hourWork <= 0u) return 0u;
+    // 開始時間
+    auto start = std::chrono::high_resolution_clock::now();
 
-    // 末端
-    if (_hourWork <= 1u)
-    {
-        return 100u;
-    }
+    function();
 
-    // 再起的に実行
-    return CalculateRecursiveSalary(_hourWork - 1) * 2u - 50u;
+    // 終了時間
+    auto end = std::chrono::high_resolution_clock::now();
+
+    // (終了 - 開始) でかかった時間を計算
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+
+    // 返す
+    return duration.count();
 }
 
 int main(void)
 {
-    unsigned int hourlyWage = 1072u;
-    unsigned int hourWork = 0u;
+    std::string hugeString(1000000, 'a');
 
-    printf("実働時間を入力 > ");
-    scanf_s("%u", &hourWork);
-
-    /// 一般的な賃金体系
-    printf("Normal Salary-Calculate-Type :\n");
-    for (unsigned int i = 1u; i <= hourWork; ++i)
+    long long copyDuration = MeasureTimeFunction([&hugeString]()
     {
-        printf("%2u hour : %5u yen\n", i, i * hourlyWage);
-    }
+        std::string copy = hugeString;
+    });
 
-    printf("\n");
-
-    /// 再帰的な賃金体系
-    printf("Recursive Salary-Calculate-Type :\n");
-    for (unsigned int i = 1u; i <= hourWork; ++i)
+    long long moveDuration = MeasureTimeFunction([&hugeString]()
     {
-        printf("%2u hour : %5u yen\n", i, CalculateRecursiveSalary(i));
-    }
+        std::string move = std::move(hugeString);
+    });
+
+    std::cout << "コピー\t: " << copyDuration << "μ秒" << std::endl;
+    std::cout << "移動\t: " << moveDuration << "μ秒" << std::endl;
 
     return 0;
 }
